@@ -20,8 +20,11 @@ const app = new Elysia()
     return status(405);
   })
   .get("/", () => "OK")
+  .get("/api/test", () => {
+    return { message: "Test endpoint is working!" };
+  })
   .listen(3000, () => {
     console.log("Server is running on http://localhost:3000");
   });
 
-export const TApp = typeof app;
+export type TApp = typeof app;
