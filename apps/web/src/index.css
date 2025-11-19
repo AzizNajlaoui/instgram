@@ -1,9 +1,15 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:where(.dark, .dark *));
+@font-face {
+  font-family: "LogoFont";
+  src: url("../public/fonts/Grandista\ Regular.otf");
+  font-weight: normal;
+  font-style: normal;
+}
 
 @theme {
+  --font-logo: "LogoFont", sans-serif;
   --font-sans: "Inter", "Geist", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }

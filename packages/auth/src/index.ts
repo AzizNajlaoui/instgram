@@ -8,15 +8,15 @@ export const auth = betterAuth<BetterAuthOptions>({
     provider: "pg",
     schema,
   }),
-
+  trustedOrigins: ["http://localhost:3000", "http://localhost:3001"],
   emailAndPassword: {
     enabled: true,
   },
   advanced: {
     defaultCookieAttributes: {
-      sameSite: "none",
-      secure: true,
-      httpOnly: true,
+      //sameSite: "none",
+      //secure: true,
+      //httpOnly: true,
     },
   },
 });
