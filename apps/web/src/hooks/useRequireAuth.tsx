@@ -2,25 +2,18 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { authClient } from "@/lib/auth-client";
-import Home from "./Home";
 
-export default function HomePage() {
+export function useRequireAuth(redirectTo = "/login") {
   const router = useRouter();
   const { data: session, isPending } = authClient.useSession();
 
   useEffect(() => {
     if (!isPending && !session?.user) {
-      router.push("/login");
+      router.push(redirectTo);
     }
-  }, [isPending, session, router]);
+  }, [isPending, session, router, redirectTo]);
 
-  if (!session?.user) {
-    return null;
-  }
-  return (
-    <div>
-      <p>Welcome {session.user.name}</p>
-      <Home session={session} />
-    </div>
-  );
+  return { session, isPending } as const;
 }
+
+export default useRequireAuth;
